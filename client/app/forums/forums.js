@@ -27,10 +27,14 @@ angular.module('hackoverflow.forums', [
     };
 
     $scope.getForums = function getForums(forum) {
+      console.log('there');
+      //console.log(forum);
       Posts.getForums().then(function (data) {
+        console.log(data);
         $scope.forums = data.sort();
       });
     };
+    console.log('here');
     $scope.getForums();
   }
 );

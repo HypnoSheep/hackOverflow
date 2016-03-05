@@ -17,7 +17,7 @@
 
     <div class="forums" ng-repeat="forum in forums">
       <p>
-        <a ui-sref="forums.posts({forum:forum})">{{ forum }}</a>
+        <a ui-sref="forums.posts({forum:forum})" ng-click="getForums()">{{ forum }}</a>
       </p>
     </div>
 
