@@ -1,19 +1,19 @@
-angular.module('hackoverflow', [
-  'hackoverflow.services',
-  'hackoverflow.forums',
-  'hackoverflow.posts',
-  'hackoverflow.add-post',
-  'hackoverflow.edit-post',
-  'hackoverflow.answers',
-  'hackoverflow.signout',
-  'hackoverflow.profile',
-  'ui.router',
-  'ngRoute',
-  'ngAnimate',
-  'ngSanitize',
-  //'ngTagsInput',
-  'satellizer',
-  'hackoverflow.auth'
+angular.module("hackoverflow", [
+  "hackoverflow.services",
+  "hackoverflow.forums",
+  "hackoverflow.posts",
+  "hackoverflow.add-post",
+  "hackoverflow.edit-post",
+  "hackoverflow.answers",
+  "hackoverflow.signout",
+  "hackoverflow.profile",
+  "ui.router",
+  "ngRoute",
+  "ngAnimate",
+  "ngSanitize",
+  //"ngTagsInput",
+  "satellizer",
+  "hackoverflow.auth"
 ])
 
 .run(function($rootScope, $auth, $location, $state, Auth) {
@@ -43,9 +43,9 @@ angular.module('hackoverflow', [
   });
 
   //let everthing know that we need to save state now.
-  window.onbeforeunload = function (event) {
-    $rootScope.$broadcast("savestate");
-  };
+  // window.onbeforeunload = function (event) {
+  //   $rootScope.$broadcast("savestate");
+  // };
 })
 
 .controller("AppController", function($scope, $location, $auth) {

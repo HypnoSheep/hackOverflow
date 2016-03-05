@@ -17,6 +17,7 @@ angular.module("hackoverflow.add-post", [
 
   $scope.getForums = function getForums() {
     Posts.getForums().then(function (data) {
+      console.log('ayy');
       $scope.forums = data.sort();
       $scope.forums.unshift("Please choose a forum");
     });
