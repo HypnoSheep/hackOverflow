@@ -44,6 +44,7 @@ app.param('answer', function (req, res, next, id) {
     app.post('/', postController.newPost);
     app.get('/:post', postController.getPost);
     app.put('/:post', postController.editPost);
+    app.put('/:post/votes', postController.changeVote);
     app.delete('/:post', postController.deletePost);
     app.get('/:forum', postController.getPostForum);
 };

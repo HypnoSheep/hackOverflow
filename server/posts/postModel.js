@@ -9,7 +9,8 @@ var PostSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
-	tags: Array, 
+	tags: Array,
+	votes: Number,
 	// In the format [{ "text" : "tag1" }, { "text" : "tag2" }]
 	answers: [{
 		author: String,

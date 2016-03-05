@@ -8,12 +8,13 @@ angular.module('hackoverflow.posts', [
 
 .controller('PostsController', function ($scope, $stateParams, $state, Posts, Answers, TimeService, ForumService) {
   $scope.posts = [];
+  //$scope.postId =  $scope.post._id;
   $scope.forums = [];
   $scope.numberOfAnswers = {};
   $scope.forum = ForumService.currentForum.model.forum;
   $scope.TimeService = TimeService;
   $scope.forumName = '';
-
+  
   $scope.getPosts = function getPosts(forum) {
     // TODO: need to pass in forum to Posts.getPosts()
     Posts.getPosts('').then(function (data) {

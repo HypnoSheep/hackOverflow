@@ -16,6 +16,7 @@ angular.module('hackoverflow.edit-post', [
   $scope.body = $scope.post.body;
   $scope.forum = $scope.post.forum;
   $scope.tags = $scope.post.tags;
+  $scope.votes = $scope.post.votes;
 
   $scope.getForums = function getForums() {
     Posts.getForums().then(function(data) {
@@ -25,10 +26,17 @@ angular.module('hackoverflow.edit-post', [
   };
 
   $scope.submit = function() {
+    console.log($scope.post.votes);
     Posts.editPost($scope.postId, $scope.title,
-      $scope.body, $scope.forum, $scope.author, new Date(), $scope.tags);
+      $scope.body, $scope.forum, $scope.author, new Date(), $scope.tags, $scope.votes);
     $state.go('posts', { 'forum': $scope.forum });
   };
+
+  $scope.changeVote = function(vote){
+    Posts.alterVotes(vote, $scope.votes, $scope.postId).then(function(newVotes){
+      $scope.votes = newVotes;
+    })
+  }
 
   $scope.getForums();
 });

@@ -27,6 +27,8 @@ module.exports = {
     post.author = request.body.author;
     post.body = request.body.body;
     post.tags = request.body.tags;
+    post.votes = request.body.votes;
+    console.log(request.body.votes);
     console.log('post tags', post.tags);
     post.save(function(err, post) {
      if(err) {
@@ -39,11 +41,14 @@ module.exports = {
 
   editPost: function (request, response) {
     Post.findOne({ _id: request.params.post }, function (err, post){
+      console.log('postController line 44 ', request.body)
       if (err){
         return response.send(err);
       }
 
       for (var prop in request.body) {
+        console.log('prop ', prop);
+        console.log('post[prop] ', post[prop]);
         post[prop] = request.body[prop];
       }
 
@@ -57,6 +62,27 @@ module.exports = {
     });
 
   },
+
+  changeVote: function(request, response){
+    Post.findOne({_id:request.params.post}, function(err, post){
+      if (err) {
+        return response.send(err);
+      }
+
+      for (var prop in request.body) {
+        if(prop === 'votes'){
+          post[prop] = request.body[prop]
+        }
+      }
+      post.save(function (err) {
+        if(err) {
+          return response.send(err);
+        }
+        response.json({ message: 'Post updated!'});
+      })
+    });
+  },
+  
   // deletes post and it answer children
   deletePost: function (request, response, next) {
    request.post.answers.forEach(function (id) {

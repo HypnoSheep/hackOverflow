@@ -6,6 +6,10 @@
         ng-submit="submit()">
 
     <div class="add-post">
+      Vote!<br>
+      <img title="Upvote" ng-click="changeVote(true)" src="../assets/images/uparrow.png"></i><br>
+      <img title="Downvote" ng-click="changeVote(false)" src="../assets/images/downarrow.png"></i><br>
+      Total: {{post.votes}}
 
       <input    ng-model="title"
                 class="boxsizingBorder"

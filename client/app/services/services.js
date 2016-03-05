@@ -39,14 +39,15 @@ angular.module('hackoverflow.services', [])
       });
     };
 
-  var createPost = function(title, body, forum, author, created, tags) {
+  var createPost = function(title, body, forum, author, created, tags, votes) {
     var newPost = {
       title: title,
       body: body,
       forum: forum,
       author: author,
       created: created,
-      tags: tags
+      tags: tags,
+      votes: votes
     };
     console.log('create post: ', newPost);
     return $http({
@@ -60,7 +61,7 @@ angular.module('hackoverflow.services', [])
   };
 
   var editPost = function(postId, title, body,
-    forum, author, created, tags) {
+    forum, author, created, tags, votes) {
     var editedPost = {
       postId: postId,
       title: title,
@@ -69,6 +70,7 @@ angular.module('hackoverflow.services', [])
       author: author,
       created: created, 
       tags: tags,
+      votes: votes
     };
     console.log('edited post: ', editedPost);
     return $http({
@@ -86,13 +88,28 @@ angular.module('hackoverflow.services', [])
     });
   };
 
+  var alterVotes = function(vote, totalVotes, postId){
+    if(vote) {
+      totalVotes++;
+    } else {
+      totalVotes--;
+    }
+    var editedPost = {votes: totalVotes};
+    return $http({
+      method: 'PUT',
+      url: '/api/post/' + postId + '/votes/',
+      data: editedPost
+    });
+  }
+
   return {
     getForums: getForums,
     newForum: newForum,
     getPosts: getPosts,
     createPost: createPost,
     editPost: editPost,
-    deletePost: deletePost
+    deletePost: deletePost,
+    alterVotes: alterVotes
   };
 })
 
