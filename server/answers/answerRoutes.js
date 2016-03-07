@@ -1,11 +1,11 @@
-var answerController = require('./answerController.js');
-var Post       = require('../posts/postModel.js');
-var Answer    = require('./answerModel.js');
+var answerController = require("./answerController.js");
+var Post       = require("../posts/postModel.js");
+var Answer    = require("./answerModel.js");
 
 
 module.exports = function (app) {
 
-app.param('answer', function (req, res, next, id) {
+app.param("answer", function (req, res, next, id) {
 	var query = Answer.findById(id);
 
 	query.exec(function (err, answer) {
@@ -21,8 +21,8 @@ app.param('answer', function (req, res, next, id) {
 		return next();
 	});
 });
-	// Map logic to route parameter 'post'
-app.param('post', function (req, res, next, id) {
+	// Map logic to route parameter "post"
+app.param("post", function (req, res, next, id) {
 	var query = Post.findById(id);
 
 	query.exec(function (err, post) {

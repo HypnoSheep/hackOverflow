@@ -1,10 +1,10 @@
-var Post       = require('../posts/postModel.js');
-var Answer    = require('./answerModel.js');
+var Post = require("../posts/postModel.js");
+var Answer = require("./answerModel.js");
 
 module.exports = {
 
   getAnswers: function (request, response, next) {
-    Answer.find({ 'post' : request.post._id }, function (err, lesAnswers) {
+    Answer.find({ "post" : request.post._id }, function (err, lesAnswers) {
       if (err) {
         return response.send(err);
       }
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   getNumberOfAnswers: function (request, response, next) {
-    Answer.find({ 'post': request.post._id },
+    Answer.find({ "post": request.post._id },
       function (err, answers) {
         if (err) {
           return response.send(err);
@@ -53,7 +53,7 @@ module.exports = {
       if (err) {
         return response.send(err);
       }
-      response.json({ message: 'Successfully deleted' });
+      response.json({ message: "Successfully deleted" });
     });
   },
 
@@ -75,5 +75,4 @@ module.exports = {
       });
     });
   }
-
 };

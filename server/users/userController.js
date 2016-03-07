@@ -1,1 +1,1 @@
-var User = require('./userModel.js');
+var User = require("./userModel.js");

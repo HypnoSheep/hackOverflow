@@ -1,4 +1,4 @@
-var jwt = require('jwt-simple');
+var jwt = require("jwt-simple");
 
 module.exports = {
   errorLogger: function (error, request, response, next) {
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   decode: function (request, response, next) {
-    var token = request.headers['x-access-token'];
+    var token = request.headers["x-access-token"];
     var user;
 
     if (!token) {
@@ -23,7 +23,7 @@ module.exports = {
     try {
       // decode token and attach user to teh request
       // for use inside controllers
-      user = jwt.decode(token, 'secret');
+      user = jwt.decode(token, "secret");
       request.user = user;
       next();
     } catch ( error ) {

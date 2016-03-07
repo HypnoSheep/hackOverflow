@@ -1,14 +1,14 @@
-angular.module('hackoverflow.edit-post', [
-  'hackoverflow.services',
-  'ui.router'
+angular.module("hackoverflow.edit-post", [
+  "hackoverflow.services",
+  "ui.router"
 ])
 
 .config(function ($stateProvider) {
 })
 
-.controller('EditPostController', function ($scope, $state, $stateParams, Posts) {
+.controller("EditPostController", function ($scope, $state, $stateParams, Posts) {
   $scope.forums = [];
-  $scope.forum = 'Please choose a forum';
+  $scope.forum = "Please choose a forum";
   $scope.post = $stateParams.post;
   $scope.author = $stateParams.author;
   $scope.postId = $scope.post._id;
@@ -21,7 +21,7 @@ angular.module('hackoverflow.edit-post', [
   $scope.getForums = function getForums() {
     Posts.getForums().then(function(data) {
       $scope.forums = data.sort();
-      $scope.forums.unshift('Please choose a forum');
+      $scope.forums.unshift("Please choose a forum");
     });
   };
 

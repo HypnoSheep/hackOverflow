@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var PostSchema = new mongoose.Schema({
 	forum:String,
@@ -22,6 +22,4 @@ var PostSchema = new mongoose.Schema({
 	}]
 });
 
-module.exports = mongoose.model('Post', PostSchema);
-
-
+module.exports = mongoose.model("Post", PostSchema);
