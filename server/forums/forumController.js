@@ -1,4 +1,4 @@
-var Forum = require ('./forumModel');
+var Forum = require ("./forumModel");
 
 module.exports = {
   getForums: function (req, res, next) {
@@ -31,7 +31,7 @@ module.exports = {
       if (err) {
         return next(err);
       }
-      return res.json('deleted', forum);
+      return res.json("deleted", forum);
     });
   }
 

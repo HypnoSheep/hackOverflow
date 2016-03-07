@@ -1,13 +1,12 @@
-angular.module('hackoverflow.services', [])
+angular.module("hackoverflow.services", [])
 
 // POSTS
 
-.factory('Posts', function($http) {
-
+.factory("Posts", function($http) {
   var getForums = function() {
     return $http({
-      method: 'GET',
-      url: 'api/forum/'
+      method: "GET",
+      url: "api/forum/",
     })
     .then(function ( response ){
       var forums = response.data.map(function(forum) {
@@ -20,9 +19,9 @@ angular.module('hackoverflow.services', [])
   var newForum = function(forumName) {
     var forum = {name: forumName};
     return $http({
-      method: 'POST', 
-      url: 'api/forum',
-      data: forum
+      method: "POST", 
+      url: "api/forum",
+      data: forum,
     })
     .then(function ( response ){
       return response;
@@ -31,8 +30,8 @@ angular.module('hackoverflow.services', [])
 
   var getPosts = function(forum) {
     return $http({
-      method: 'GET',
-      url: '/api/post/' + forum
+      method: "GET",
+      url: "/api/post/" + forum,
     })
     .then(function ( response ){
       return response;
@@ -49,11 +48,11 @@ angular.module('hackoverflow.services', [])
       tags: tags,
       votes: votes
     };
-    console.log('create post: ', newPost);
+    console.log("create post: ", newPost);
     return $http({
-      method: 'POST',
-      url: '/api/post',
-      data: newPost
+      method: "POST",
+      url: "/api/post",
+      data: newPost,
     })
     .then(function(response) {
       return response;
@@ -72,19 +71,19 @@ angular.module('hackoverflow.services', [])
       tags: tags,
       votes: votes
     };
-    console.log('edited post: ', editedPost);
+    console.log("edited post: ", editedPost);
     return $http({
-      method: 'PUT',
-      url: '/api/post/' + postId,
-      data: editedPost
+      method: "PUT",
+      url: "/api/post/" + postId,
+      data: editedPost,
     });
   };
 
   var deletePost = function(postId) {
-    console.log(postId + ' is for deleting');
+    console.log(postId + " is for deleting");
     return $http({
-      method: 'DELETE',
-      url: '/api/post/' + postId
+      method: "DELETE",
+      url: "/api/post/" + postId,
     });
   };
 
@@ -115,13 +114,13 @@ angular.module('hackoverflow.services', [])
 
 // ANSWERS
 
-.factory('Answers', function ( $http ) {
+.factory("Answers", function ( $http ) {
 
   var getAnswers = function(postId) {
     console.log(postId + " is postId");
     return $http({
-      method: 'GET',
-      url: '/api/post/' + postId + '/answers'
+      method: "GET",
+      url: "/api/post/" + postId + "/answers",
     })
     .then(function(response) {
       return response;
@@ -130,8 +129,8 @@ angular.module('hackoverflow.services', [])
 
   var getNumberOfAnswers = function(postId) {
     return $http({
-      method: 'GET',
-      url: '/api/post/' + postId + '/answersNumber'
+      method: "GET",
+      url: "/api/post/" + postId + "/answersNumber",
     })
     .then(function(response) {
       return response;
@@ -146,11 +145,11 @@ angular.module('hackoverflow.services', [])
       created: created,
       votes: 0
     };
-    console.log('new answer: ', newAnswer);
+    console.log("new answer: ", newAnswer);
     return $http({
-      method: 'POST',
-      url: '/api/post/' + postId + '/answers',
-      data: newAnswer
+      method: "POST",
+      url: "/api/post/" + postId + "/answers",
+      data: newAnswer,
     });
   };
   
@@ -167,8 +166,8 @@ angular.module('hackoverflow.services', [])
 
   var deleteAnswer = function(postId, answerId) {
     return $http({
-      method: 'DELETE',
-      url: '/api/post/' + postId + '/answers/' + answerId
+      method: "DELETE",
+      url: "/api/post/" + postId + "/answers/" + answerId,
     });
   };
 
@@ -208,12 +207,12 @@ angular.module('hackoverflow.services', [])
 
 // AUTHENTICATION
 
-.factory('Auth', function($http, $location, $window) {
+.factory("Auth", function($http, $location, $window) {
 
   var getUser = function getUser() {
     return $http({
-      method: 'GET',
-      url: '/api/me/'
+      method: "GET",
+      url: "/api/me/"
     })
     .then(function ( response ){
       return response;
@@ -221,34 +220,27 @@ angular.module('hackoverflow.services', [])
     };
 
   return {
-    getUser: getUser
+    getUser: getUser,
   };
 })
 
-.factory('TimeService', function() {
-
+.factory("TimeService", function() {
   var relativeDate = function(date) {
     return moment(date).fromNow();
   };
-
   return {
-    relativeDate: relativeDate
+    relativeDate: relativeDate,
   };
-
 })
 
-.factory('ForumService', ['$rootScope', function ($rootScope) {
-
+.factory("ForumService", ["$rootScope", function ($rootScope) {
   var currentForum = {
-
     model: {
-      forum: 'Algorithms'
+      forum: "Algorithms"
     },
-
     SaveState: function () {
       sessionStorage.ForumService = angular.toJson(currentForum.model);
     },
-
     RestoreState: function () {
       currentForum.model = angular.fromJson(sessionStorage.ForumService);
     }
@@ -258,6 +250,6 @@ angular.module('hackoverflow.services', [])
   $rootScope.$on("restorestate", currentForum.RestoreState);
 
   return {
-    currentForum: currentForum
+    currentForum: currentForum,
   };
 }]);

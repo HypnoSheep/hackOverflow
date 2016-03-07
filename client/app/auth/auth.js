@@ -1,12 +1,12 @@
-angular.module('hackoverflow.auth', [
-  'hackoverflow.services',
-  'satellizer'
+angular.module("hackoverflow.auth", [
+  "hackoverflow.services",
+  "satellizer"
 ])
 
 .config(function($stateProvider) {
 })
 
-.controller('AuthController',
+.controller("AuthController",
   function($scope, $rootScope, $auth, $state, Auth) {
 
   $scope.authenticate = function(provider) {
@@ -20,10 +20,10 @@ angular.module('hackoverflow.auth', [
               picture: response.data.picture
             }
           });
-        $state.go('forums');
+        $state.go("forums");
       })
       .catch(function(response) {
-        console.error('Cannot connect to GitHub: ', response);
+        console.error("Cannot connect to GitHub: ", response);
       });
   };
 });

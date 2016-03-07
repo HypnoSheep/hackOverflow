@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var AnswerSchema = new mongoose.Schema({
 	body: String,
@@ -11,4 +11,4 @@ var AnswerSchema = new mongoose.Schema({
   votes: Number
 });
 
-module.exports = mongoose.model('Answer', AnswerSchema);
+module.exports = mongoose.model("Answer", AnswerSchema);

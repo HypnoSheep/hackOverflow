@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var UserSchema = new mongoose.Schema({
   name: String,
@@ -10,8 +10,8 @@ var UserSchema = new mongoose.Schema({
   ghLogin: String
   // photoUrl: String,
   // created: Date,
-  // posts : [{ type: Schema.Types.ObjectId, ref: 'Posts'}],
-  // answers: [{ type: Schema.Types.ObjectId, ref: 'Answers'}]
+  // posts : [{ type: Schema.Types.ObjectId, ref: "Posts"}],
+  // answers: [{ type: Schema.Types.ObjectId, ref: "Answers"}]
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

@@ -1,13 +1,13 @@
-var path = require('path');
-var express = require('express');
-var mongoose = require('mongoose');
+var path = require("path");
+var express = require("express");
+var mongoose = require("mongoose");
 var app = express();
 
-//mongoose.connect('mongodb://localhost/hackoverflow'); //connect to mongo database
+//mongoose.connect("mongodb://localhost/hackoverflow"); //connect to mongo database
 
-var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost/hackOverflow';
+var dbURI = process.env.MONGOLAB_URI || "mongodb://localhost/hackOverflow";
 
-//var dbURI = 'mongodb://localhost/MongoosePM';
+//var dbURI = "mongodb://localhost/MongoosePM";
 
 mongoose.connect(dbURI);
 
@@ -17,19 +17,19 @@ mongoose.connect(dbURI);
  */
 
  // logs a connection
- mongoose.connection.on('connected', function () {
-   console.log('Mongoose connected to ' + dbURI);
+ mongoose.connection.on("connected", function () {
+   console.log("Mongoose connected to " + dbURI);
  });
 
  // logs when disconnected
- mongoose.connection.on('disconnected', function () {
-   console.log('Mongoose disconnected');
+ mongoose.connection.on("disconnected", function () {
+   console.log("Mongoose disconnected");
  });
 
  // logs when user terminates app
- process.on('SIGINIT', function () {
+ process.on("SIGINIT", function () {
    mongoose.connection.close(function () {
-     console.log('Mongoose disconnected through app termination');
+     console.log("Mongoose disconnected through app termination");
      process.exit(0);
    });
  });
@@ -38,19 +38,19 @@ mongoose.connect(dbURI);
 
 // UNCOMMENT TO USE WITH MIDDLEWARE.JS
 
-require('./config/middleware.js')(app, express);
+require("./config/middleware.js")(app, express);
 
 //COMMENT OUT TO USE WITH MIDDLEWARE.JS
 
-// app.use(express.static(__dirname + '/../client'));
+ //app.use(express.static(__dirname + "/../client"));
 
 
-// This redirects any GET requests that aren't for '/' or our the routes defined in
+// This redirects any GET requests that aren"t for "/" or our the routes defined in
 // middleware.js to the home-page, letting the router on our SPA front-end handle it.
-// This way, trying to refresh a specific page of the app won't
-// end in a "cannot GET '/part/of/app'" error
-app.get('*', function (req, res){
-  res.sendFile(path.join(__dirname + '../../client/index.html'));
+// This way, trying to refresh a specific page of the app won"t
+// end in a "cannot GET "/part/of/app"" error
+app.get("*", function (req, res){
+  res.sendFile(path.join(__dirname + "../../client/index.html"));
 });
 
 var port = process.env.PORT || 8000;

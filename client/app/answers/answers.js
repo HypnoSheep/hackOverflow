@@ -1,17 +1,17 @@
-angular.module('hackoverflow.answers', [
-  'hackoverflow.services',
-  'ui.router'
+angular.module("hackoverflow.answers", [
+  "hackoverflow.services",
+  "ui.router"
 ])
 
 .config(function ($httpProvider, $urlRouterProvider, $stateProvider) {
 })
 
-.controller('AnswersController',
+.controller("AnswersController",
   function ($scope, $rootScope, $stateParams, $state, Answers, Posts, TimeService) {
   $scope.answers = [];
   $scope.post = {};
   $scope.postId = $stateParams.postId;
-  $scope.newAnswerBody = '';
+  $scope.newAnswerBody = "";
   $scope.theUser = $rootScope.user;
   $scope.TimeService = TimeService;
   $scope.votes = $scope.post.votes;
@@ -57,7 +57,7 @@ angular.module('hackoverflow.answers', [
 
   $scope.deletePost = function deletePost(postId) {
     Posts.deletePost(postId);
-    $state.go('forums.posts', {forum: $stateParams.forum});
+    $state.go("forums.posts", {forum: $stateParams.forum});
   };
 
   $scope.submit = function () {
