@@ -82,7 +82,7 @@ module.exports = {
   //     })
   //   });
   // },
-  
+
   // deletes post and it answer children
   deletePost: function (request, response, next) {
    request.post.answers.forEach(function (id) {
@@ -114,7 +114,12 @@ module.exports = {
  },
 
  getPostForum: function (request, response, next) {
-  Post.find({}).select({ forum: request.body.post.forum })
+  Post.find({forum: request.params.forum}, function(err, posts) {
+    if (err) {
+      return next(err);
+    }
+    response.json(posts);
+  })
  }
 
 };
