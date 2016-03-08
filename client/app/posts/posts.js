@@ -13,7 +13,7 @@ angular.module('hackoverflow.posts', [
 
   $scope.getPosts = function getPosts(forum) {
     // TODO: need to pass in forum to Posts.getPosts()
-    Posts.getPosts('').then(function (data) {
+    Posts.getPosts(forum).then(function (data) {
       $scope.posts = data.data;
       // this creates an object $scope.numberOfAnswers that
       // keeps track of each posts number of Answers. not
