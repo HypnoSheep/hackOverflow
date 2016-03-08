@@ -34,7 +34,7 @@ app.configure(function () {
 /* After a session is established, a cookie is stored in the browers.
 These serialize and deserialize functions keep track for user instances as they start and finish sessions. */
 passport.serializeUser(function (user, done) {
-    done(null, user.id);
+  done(null, user.id);
 });
 
 
@@ -46,6 +46,7 @@ passport.deserializeUser(function (id, done) {
       done(err, null);
     }
   });
+});
 
 /* Configure Passport using app information from Github */
 
@@ -66,15 +67,15 @@ passport.use(new GitHubStrategy({
       } else {
         //TODO: Link user to database.
         var user = new User({
-          oauthID: ,
-          name:
+          //oauthID: ,
+          //name:
           created: Date.now()
         });
         user.save(function (err) {
           if(err){
             console.log(err);
           } else {
-            console.log("Saving user.....");
+            console.log('Saving user.....');
             done(null, user);
           }
         })
@@ -110,7 +111,5 @@ function ensureAuthenticated (req, res, next) {
   if (req.isAuthenticated()) { 
     return next(); 
   }
-  
   res.redirect('/login');
 }
-

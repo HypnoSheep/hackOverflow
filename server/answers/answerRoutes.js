@@ -14,7 +14,7 @@ app.param('answer', function (req, res, next, id) {
     }
 
     if (!answer) {
-      return next(new Error("can't find answer"));
+      return next(new Error('can\'t find answer'));
     }
 
 		req.answer = answer;
@@ -31,7 +31,7 @@ app.param('post', function (req, res, next, id) {
     }
 
     if (!post) {
-      return next(new Error("can't find post"));
+      return next(new Error('can\'t find post'));
     }
 
 		req.post = post;

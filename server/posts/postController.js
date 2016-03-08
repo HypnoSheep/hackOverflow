@@ -1,18 +1,16 @@
-var Post       = require('./postModel.js');
-var Answer    = require('../answers/answerModel.js');
+var Post = require('./postModel.js');
+var Answer = require('../answers/answerModel.js');
 
 module.exports = {
   // gets all posts
   getPosts: function (req, res, next) {
     Post.find(function (err, posts) {
-    if (err) {
-      return next(err);
-    }
-
-    res.json(posts);
-   });
- },
-
+      if (err) {
+        return next(err);
+      }
+      res.json(posts);
+    });
+  },
   // gets a single post
   getPost: function (req, res) {
     req.post.populate('answer', function (err, post) {
@@ -21,15 +19,13 @@ module.exports = {
  },
 
   // creates a new post
-  newPost: function (request, response, next) {
+  newPost: function(request, response, next) {
     var post = new Post(request.body);
     post.title = request.body.title;
     post.author = request.body.author;
     post.body = request.body.body;
     post.tags = request.body.tags;
     post.votes = request.body.votes;
-    console.log(request.body.votes);
-    console.log('post tags', post.tags);
     post.save(function(err, post) {
      if(err) {
       return next(err);

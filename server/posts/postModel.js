@@ -11,7 +11,7 @@ var PostSchema = new mongoose.Schema({
 	},
 	tags: Array,
 	votes: Number,
-	// In the format [{ "text" : "tag1" }, { "text" : "tag2" }]
+	// In the format [{ 'text' : 'tag1' }, { 'text' : 'tag2' }]
 	answers: [{
 		author: String,
 		body:String,
@@ -23,5 +23,3 @@ var PostSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Post', PostSchema);
-
-

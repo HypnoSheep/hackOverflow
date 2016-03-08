@@ -1,5 +1,5 @@
-var Post       = require('../posts/postModel.js');
-var Answer    = require('./answerModel.js');
+var Post = require('../posts/postModel.js');
+var Answer = require('./answerModel.js');
 
 module.exports = {
 
@@ -75,5 +75,4 @@ module.exports = {
       });
     });
   }
-
 };

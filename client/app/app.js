@@ -19,10 +19,10 @@ angular.module('hackoverflow', [
 
 .run(function($rootScope, $auth, $location, $state, Auth) {
 
-  $rootScope.$on("$routeChangeStart",
+  $rootScope.$on('$routeChangeStart',
     function (event, next, current) {
 
-    if (sessionStorage.restorestate == "true") {
+    if (sessionStorage.restorestate === 'true') {
 
       //let everything know we need to restore state
       $rootScope.$broadcast('restorestate');
@@ -30,7 +30,7 @@ angular.module('hackoverflow', [
     }
   });
 
-  $rootScope.$on("$stateChangeStart", function (event, next, current) {
+  $rootScope.$on('$stateChangeStart', function (event, next, current) {
     // always add our userProfile data to the rootScope if it isn't already there
     if ($rootScope.userProfile === undefined) {
       Auth.getUser()
@@ -53,7 +53,7 @@ angular.module('hackoverflow', [
 
   // this ensures that application fully reboots and
   // defaults to main page if user reloads a page.
-  // $location.path("/");
+  // $location.path('/');
 })
 
 .config(function($httpProvider, $urlRouterProvider,
