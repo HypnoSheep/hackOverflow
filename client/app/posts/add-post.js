@@ -11,12 +11,13 @@ angular.module('hackoverflow.add-post', [
   $scope.title = '';
   $scope.body = '';
   $scope.forums = [];
-  $scope.forum = ForumService.currentForum.model.forum;
+  $scope.forum = window.location.href.split('/').pop();
   $scope.tags = [];
   $scope.votes = 0;
 
   $scope.getForums = function getForums() {
     Posts.getForums().then(function (data) {
+      console.log('ayy');
       $scope.forums = data.sort();
       $scope.forums.unshift('Please choose a forum');
     });

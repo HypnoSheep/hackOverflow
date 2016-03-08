@@ -1,6 +1,6 @@
 angular.module('hackoverflow.posts', [
   'hackoverflow.services',
-  'ui.router'
+  'ui.router',
 ])
 
 .config(function ($httpProvider, $urlRouterProvider, $stateProvider) {
@@ -30,6 +30,6 @@ angular.module('hackoverflow.posts', [
       $scope.numberOfAnswers[postId] = data.data;
     });
   };
-
+  
   $scope.getPosts($stateParams.forum);
 });

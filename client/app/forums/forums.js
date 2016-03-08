@@ -12,7 +12,7 @@ angular.module('hackoverflow.forums', [
     $scope.forums = [];
     $scope.forum = $state.params.forum || 'Select Forum...'
     $scope.forumsClass = $state.current.name === 'forums' ? 'middle' : 'sidebar';
-    $scope.forumName= '';
+    $scope.forumName = '';
 
     $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
       $scope.forumsClass = toState.name === 'forums' ? 'middle' : 'sidebar';
@@ -27,10 +27,14 @@ angular.module('hackoverflow.forums', [
     };
 
     $scope.getForums = function getForums(forum) {
+      console.log('there');
+      //console.log(forum);
       Posts.getForums().then(function (data) {
+        console.log(data);
         $scope.forums = data.sort();
       });
     };
+    console.log('here');
     $scope.getForums();
   }
 );
