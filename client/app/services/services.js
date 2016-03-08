@@ -293,7 +293,7 @@ angular.module('hackoverflow.services', [])
 .factory('ForumService', ['$rootScope', function ($rootScope) {
   var currentForum = {
     model: {
-      forum: 'Algorithms'
+      forum: location
     },
     SaveState: function () {
       sessionStorage.ForumService = angular.toJson(currentForum.model);
