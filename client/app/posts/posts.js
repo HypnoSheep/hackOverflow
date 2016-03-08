@@ -30,10 +30,6 @@ angular.module('hackoverflow.posts', [
       $scope.numberOfAnswers[postId] = data.data;
     });
   };
-
-  $scope.setForum = function(){
-    ForumService.setLocation(true);
-  }
-  console.log(window.location);
+  
   $scope.getPosts($stateParams.forum);
 });

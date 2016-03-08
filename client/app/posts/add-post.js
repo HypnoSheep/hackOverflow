@@ -11,7 +11,7 @@ angular.module('hackoverflow.add-post', [
   $scope.title = '';
   $scope.body = '';
   $scope.forums = [];
-  $scope.forum = ForumService.currentForum.model.forum;
+  $scope.forum = window.location.href.split('/').pop();
   $scope.tags = [];
   $scope.votes = 0;
 
