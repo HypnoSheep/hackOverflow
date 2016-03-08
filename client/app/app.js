@@ -44,15 +44,9 @@ angular.module('hackoverflow', [
   });
 
   //let everthing know that we need to save state now.
-<<<<<<< 31fcdec21dc1689be02842fb651f90ccb54d7e08
   window.onbeforeunload = function (event) {
     $rootScope.$broadcast('savestate');
   };
-=======
-  // window.onbeforeunload = function (event) {
-  //   $rootScope.$broadcast("savestate");
-  // };
->>>>>>> fixing navigation bug
 })
 
 .controller('AppController', function($scope, $location, $auth) {
