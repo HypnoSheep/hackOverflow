@@ -10,7 +10,7 @@ angular.module('hackoverflow', [
   'hackoverflow.comments',
   'ui.router',
   'ngRoute',
-  //'ngAnimate',
+  'ngAnimate',
   'ngSanitize',
   'ngTagsInput',
   'satellizer',
