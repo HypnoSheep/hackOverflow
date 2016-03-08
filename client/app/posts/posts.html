@@ -12,5 +12,6 @@
       <span class="num-answers"> {{ numberOfAnswers[post._id] }} Answer{{ + numberOfAnswers[post._id] !== 1 ? 's' : '' }}</span>
     </p>
   </div>
+  <p ng-show="!posts.length">{{message}}</p>
 
 </div>

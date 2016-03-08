@@ -10,11 +10,16 @@ angular.module('hackoverflow.posts', [
   $scope.posts = [];
   $scope.numberOfAnswers = {};
   $scope.TimeService = TimeService;
+  $scope.message = '';
 
   $scope.getPosts = function getPosts(forum) {
     // TODO: need to pass in forum to Posts.getPosts()
+    $scope.message = 'Loading...';
     Posts.getPosts(forum).then(function (data) {
       $scope.posts = data.data;
+      if ($scope.posts.length === 0) {
+        $scope.message = 'There are no Posts yet for this Forum.'
+      }
       // this creates an object $scope.numberOfAnswers that
       // keeps track of each posts number of Answers. not
       // ideal, but works. need to refactor how we go
