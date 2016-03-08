@@ -42,13 +42,13 @@ require('./config/middleware.js')(app, express);
 
 //COMMENT OUT TO USE WITH MIDDLEWARE.JS
 
-// app.use(express.static(__dirname + '/../client'));
+ //app.use(express.static(__dirname + '/../client'));
 
 
 // This redirects any GET requests that aren't for '/' or our the routes defined in
 // middleware.js to the home-page, letting the router on our SPA front-end handle it.
 // This way, trying to refresh a specific page of the app won't
-// end in a "cannot GET '/part/of/app'" error
+// end in a 'cannot GET '/part/of/app'' error
 app.get('*', function (req, res){
   res.sendFile(path.join(__dirname + '../../client/index.html'));
 });
